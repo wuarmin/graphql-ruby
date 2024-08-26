@@ -767,7 +767,9 @@ module GraphQL
         rescue GraphQL::ExecutionError => err
           err
         end
-      rescue ArgumentError
+      rescue ArgumentError => e 
+        puts "ArgumentError: #{e.message}"
+        puts e.backtrac
         if method_receiver && method_to_call
           assert_satisfactory_implementation(method_receiver, method_to_call, method_args)
         end
